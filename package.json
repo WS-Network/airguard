@@ -1,0 +1,14 @@
+{
+  "name": "airguard",
+  "version": "1.0.0",
+  "description": "AirGuard - Network Security Management Platform",
+  "scripts": {
+    "web:dev": "pnpm --filter @web dev",
+    "api:dev": "pnpm --filter @api dev",
+    "compose:up": "docker compose -f docker/docker-compose.yml up --build",
+    "compose:down": "docker compose -f docker/docker-compose.yml down -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
