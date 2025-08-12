@@ -1,6 +1,11 @@
 from pydantic import BaseModel, Field
 from typing import Literal, Any, List, Dict
 
+
+
+
+
+
 Vendor = Literal["cisco","juniper","mikrotik","aruba","generic"]
 
 class ParseConfigReq(BaseModel):
@@ -29,6 +34,7 @@ class DiagramRes(BaseModel):
     format: Literal["drawio","mermaid"]
     data: str
 
+
 class PlanChangesReq(BaseModel):
     siteId: str
     intent: str
@@ -44,4 +50,24 @@ class ValidateReq(BaseModel):
 class ValidateRes(BaseModel):
     ok: bool
     errors: List[str]
+
     metrics: Dict[str, float]
+    
+# Telemetry and Optimization schemas
+from datetime import datetime
+
+class TelemetryReq(BaseModel):
+    device_id: str
+    protocol: Literal["lorawan", "snmp", "mqtt"]
+
+class TelemetryRes(BaseModel):
+    timestamp: datetime
+    data: Dict[str, Any]
+
+class OptimizationReq(BaseModel):
+    device_id: str
+    protocol: Literal["lorawan", "snmp", "mqtt"]
+    metrics: Dict[str, Any]
+
+class OptimizationRes(BaseModel):
+    suggestions: Dict[str, Any]
